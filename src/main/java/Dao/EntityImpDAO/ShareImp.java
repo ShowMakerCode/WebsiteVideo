@@ -19,7 +19,7 @@ public class ShareImp extends AbstractDao<Share> implements ShareDao{
 	}
 	@Override
 	public Share create(Share entity) {
-		return null;
+		return super.create(entity);
 	}
 	@Override
 	public Share update(Share entity) {

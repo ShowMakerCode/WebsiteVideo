@@ -16,7 +16,7 @@ public class VideoImp extends AbstractDao<Video> implements VideoDao{
 
 	@Override
 	public Video findByHref(String href) {
-		String query = "Select o from video o where o.href = ?0";
+		String query = "Select o from Video o where o.link = ?0";
 		return super.finOne(Video.class, query, href);
 	}
 
@@ -30,5 +30,39 @@ public class VideoImp extends AbstractDao<Video> implements VideoDao{
 		// TODO Auto-generated method stub
 		return super.findAll(Video.class, true, pageNumber, pageSize);
 	}
+	@Override
+	public Video FindbyStringId(String id) {
+		String qr = "select o from Video o where o.id = ?0";
+		return super.finOne(Video.class,qr,id);
+	}
+
+	@Override
+	public List<Video> FindAllisNotActive() {
+		String querry = "Select o from Video o";
+		return super.CreateQuery(querry);
+	}
+
+
+	@Override
+	public Video create(Video entity){
+		try {
+			Video video = super.create(entity);
+			return video;
+		} catch (Exception e) {
+			return null;
+		}
+
+	}
+	@Override
+	public Video update(Video entity){
+		try {
+			Video video = super.update(entity);
+			return video;
+		} catch (Exception e) {
+			return null;
+		}
+
+	}
+
 
 }

@@ -15,4 +15,5 @@ public interface UserDao {
 	User create(String username,String Password, String Email, String Fullname);
 	User update(User entity);
 	User delete(String Username);
+	List<User> findAllisActive();
 }

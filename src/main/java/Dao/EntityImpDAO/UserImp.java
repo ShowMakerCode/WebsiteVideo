@@ -26,8 +26,13 @@ public class UserImp extends AbstractDao<User> implements UserDao{
 
 	@Override
 	public User login(String user, String pass) {
-		String query = "Select o from User o where o.id =?0 and o.password=?1";
-		return super.finOne(User.class, query, user,pass);
+		String query = "Select o from User o where o.id =?0 and o.password=?1 and o.active = true";
+		try {
+		User userx = super.finOne(User.class, query, user,pass);
+		return userx;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override
@@ -66,8 +71,12 @@ public class UserImp extends AbstractDao<User> implements UserDao{
 	}
 
 	@Override
+	public List<User> findAllisActive() {
+		return super.findAll(User.class,true);
+	}
+
+	@Override
 	public User update(User entity) {
-		// TODO Auto-generated method stub
 		return super.update(entity);
 	}
 

@@ -2,7 +2,7 @@ package Dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
@@ -36,7 +36,7 @@ public class AbstractDao<T> {
 	public List<T> findAll(Class<T> clasz, boolean ischeck,int pageNumber,int pageSize) {
 		String entityName = clasz.getName();
 		StringBuilder hql = new StringBuilder();
-		hql.append("Select o From").append(entityName).append(" o");
+		hql.append("Select o From ").append(entityName).append(" o");
 		if (ischeck) {
 			hql.append(" where active = 1");
 		}
@@ -96,5 +96,21 @@ public class AbstractDao<T> {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
+	}
+	public List CreateQuery(String querry, Object... params){
+		TypedQuery query = session.createQuery(querry);
+		for (int i = 0; i < params.length; i++) {
+			query.setParameter(i, params[i]);
+		}
+		List result = query.getResultList();
+		return result;
+	}
+	public List<T> findAllQuery(Class<T> clasz,String hql, Object... params) {
+		TypedQuery<T> query = session.createQuery(hql,clasz);
+		for (int i = 0; i < params.length; i++) {
+			query.setParameter(i, params[i]);
+		}
+		List<T> result = query.getResultList();
+		return result;
 	}
 }

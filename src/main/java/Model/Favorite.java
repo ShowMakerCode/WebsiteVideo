@@ -2,30 +2,26 @@ package Model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "favorite",uniqueConstraints = {@UniqueConstraint(columnNames = {"iduser","idvideo"})})
 public class Favorite {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;  
 	@ManyToOne @JoinColumn(name = "iduser")
 	private User iduser;
 	@ManyToOne @JoinColumn(name = "idvideo")
 	private Video idvideo;
+	@Temporal(value = TemporalType.DATE)
 	private Date likedate;
+	private boolean islike;
 	
 	
 	public Favorite() {
 		
 	}
-
 
 	public Favorite(Long id, User iduser, Video idvideo, Date likedate) {
 		super();
@@ -76,8 +72,11 @@ public class Favorite {
 	}
 
 
-	
-	
-	
-	
+	public boolean getIslike() {
+		return islike;
+	}
+
+	public void setIslike(boolean islike) {
+		this.islike = islike;
+	}
 }

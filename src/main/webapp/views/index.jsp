@@ -15,33 +15,11 @@
 <body>
 	<div class="container">
 		<header class="row"></header>
-		<%@ include file="/views/common/menu.jsp" %>
+			<%@ include file="/views/common/menu.jsp" %>
+
 		<div style="padding-top: 25px"></div>
-		<div class="row">
-			<article class="row">
-			<c:forEach items = "${videos}" var ="video">
-			<div class="col-sm-4">
-					<div class="card" style="width: 18rem;height:">
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item">Poster Video</li>
-							<li class="list-group-item">${video.title}</li>
-							<li class="list-group-item"> 
-								<button type="button" class="btn btn-success">Like</button>
-								<button type="button" class="btn btn-warning">Share</button>
-							</li>
-						</ul>
-					</div>
-				</div>
-			
-			 </c:forEach>
-				
-			</article>
-
-		</div>
-
-	</div>
-
-
+		<%@ include file="/views/user/videoload.jsp" %>
+		<h3></h3>
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
 		integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"

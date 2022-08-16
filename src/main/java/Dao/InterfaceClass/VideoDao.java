@@ -12,4 +12,7 @@ public interface VideoDao {
 	Video create(Video entity);
 	Video update(Video entity);
 	Video delete(Video entity);
+	Video FindbyStringId(String id);
+	List<Video> FindAllisNotActive();
+
 }

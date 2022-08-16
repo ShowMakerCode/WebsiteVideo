@@ -47,7 +47,9 @@
 											</div>
 
 											<button class="btn btn-outline-light btn-lg px-5"
-												type="submit"">Đăng Nhập</button>
+												type="submit">Đăng Nhập</button>
+											<a style="margin-top: 15px" class="btn btn-outline-light btn-lg px-5"
+											href="<c:url value = "/user/login/faceid"/>">Đăng Nhập FaceID</a>
 										</div>
 									</div>
 								</div>
